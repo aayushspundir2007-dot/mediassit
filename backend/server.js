@@ -20,11 +20,9 @@ dotenv.config();
 
 const app = express();
 
-// CORS - open for all origins (safe for this app)
-app.use(cors({
-  origin: true,
-  credentials: true
-}));
+// CORS - allow all origins
+app.use(cors());
+app.options('*', cors());
 
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
