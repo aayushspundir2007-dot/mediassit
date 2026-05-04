@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import cron from 'node-cron';
+import fs from 'fs';
 import connectDB from './config/db.js';
 import authRoutes from './routes/auth.js';
 import doctorRoutes from './routes/doctors.js';
@@ -17,6 +18,9 @@ import Notification from './models/Notification.js';
 import User from './models/User.js';
 
 dotenv.config();
+
+// Create uploads folder if it doesn't exist
+if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
 
 const app = express();
 
