@@ -20,10 +20,16 @@ dotenv.config();
 
 const app = express();
 
-// CORS - allow all origins
-app.use(cors());
-app.options('*', cors());
+// CORS - manually set headers for all origins
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') return res.sendStatus(200);
+  next();
+});
 
+app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
