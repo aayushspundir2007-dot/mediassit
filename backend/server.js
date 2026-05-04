@@ -25,6 +25,8 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
   'http://localhost:5173',
+  'https://mediassit.vercel.app',
+  'https://mediassit-git-main-aayushspundir2007-dot.vercel.app',
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
